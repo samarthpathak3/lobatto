@@ -34,12 +34,16 @@ section{
 .h-800{
     height: 800px;
 }
+.highlight {
+    color: #f00000;
+}
 
 .btn {
     font-weight: 700;
     font-size: 16px;
     padding: 12px 40px;
     border-radius: 0;
+    border-radius: 50px;
 }
 .btn-primary {
     background: #f00000;
@@ -47,10 +51,12 @@ section{
     color: #ffffff;
     position: relative;
 }
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:focus, .btn-primary:hover:active, .btn-primary:focus:active, .btn-primary:active {
     color: #ffffff !important;
     background: #f6b225 !important;
     border-color: #f6b225 !important;
+    box-shadow: none;
+    outline: 0;
 }
 
 .btn.btn-md {
@@ -63,7 +69,7 @@ section{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgb(0 0 0 / 70%);
+    background: rgb(0 0 0 / 80%);
     content: "";
 }
 .bg-overley-white:before {
@@ -72,7 +78,7 @@ section{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgb(255 255 255 / 80%);
+    background: rgb(255 255 255 / 30%);
     content: "";
 }
 
@@ -83,7 +89,13 @@ section{
     font-size: 36px;
     font-weight: 600;
 }
-
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 111;
+}
 .header .navbar {
     width: 100%;
     padding: 0px 0;
@@ -95,7 +107,7 @@ section{
     font-weight: 600;
     font-size: 16px;
     padding: 18px 22px;
-    color: #1a2844;
+    color: #000;
     text-transform: capitalize;
 }
 .header .navbar .navbar-nav .nav-item .nav-link:hover {
@@ -110,7 +122,10 @@ section{
     text-align: right;
 }
 
-
+.banner {
+    height: 100vh;
+    overflow: hidden;
+}
 .banner .carousel-control-next, .banner .carousel-control-prev{
 	background: none;
 	width: auto;
@@ -146,13 +161,21 @@ section{
     width: 90%;
     text-align: center;
     color: #fff;
-    opacity: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+}
+.category-items .category-overley-content h5 {
+    font-size: 30px;
+    color: #f6b225 ;
+}
+.category-items .category-overley-content p {
+    opacity: 1;
     transition: all 0.5s ease;
 }
 .category-items:hover:before{
     opacity: 1;
 }
-.category-items:hover .category-overley-content {
+.category-items:hover .category-overley-content p {
     opacity: 1;
 }
 
@@ -168,77 +191,26 @@ section{
     right: 0;
     opacity: 0.5;
 }
-
-
-.testimonial  .owl-carousel{
-    margin-top: 20px;
-    padding: 0 50px;
-}
-
-.testimonial .owl-carousel .owl-item img {
-    width: auto;
-    display: inherit;
-    height: 100px;
-}
-
-.testimonial .testimonial-author h6{
-    color: #E42129;
-    font-size: 18px;
-    font-weight: bold;
-}
-.testimonial .owl-carousel .owl-nav .owl-prev,
-.testimonial .owl-carousel .owl-nav .owl-next {
-    display: block;
-    position: absolute;
-    text-indent: inherit;
-    width: auto;
-    cursor: pointer;
-    -webkit-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-    display: block;
-    position: absolute;
-    text-indent: inherit;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    margin: 0 !important;
-    display: inline-block;
-}
-.testimonial .owl-carousel .owl-nav .owl-prev{
-    left: 0px;
-}
-.testimonial .owl-carousel .owl-nav .owl-next{
-    right: 0px;
-}
-.testimonial .owl-carousel .owl-nav i {
-    font-size: 14px;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    display: inline-block;
-    color: #ffffff;
-    background: #ff1300;
-    border: 0px solid #ff1300;
-    text-align: center;
-    -webkit-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-}
-
 .contact-form{
     padding: 40px;
     background :#ff1300;
     color: #ffffff;
-    margin-right: -30px;
     position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .contact-form .form-group {
     margin-bottom: 1rem;
 }
 .contact-form .form-control {
-    border: 1px solid #ebebeb;
+    border: 0;
+    border-bottom: 2px solid #ebebeb;
+    background-color: transparent;
     border-radius: 0px;
     height: 50px;
-    padding: 10px 20px;
+    padding: 10px;
     -webkit-box-shadow: none;
     box-shadow: none;
     font-size: 14px;
@@ -248,6 +220,12 @@ section{
     display: block;
     width: 100%;
 }
+.contact-form .form-control:focus {
+    border-color: #f6b225;
+}
+.contact-form .form-control::placeholder {
+    color: #fff;
+}
 .contact-form textarea.form-control {
     height: auto;
 }
@@ -255,9 +233,13 @@ section{
     font-weight: 700;
     font-size: 16px;
     padding: 12px 40px;
-    border-radius: 0;
+    border-radius: 50px;
     width: 100%;
-    background: #fff;
+    background-color: #fff;
+}
+.contact-form .btn:hover, .contact-form .btn:focus {
+    background-color: #f6b225;
+    color: #fff;
 }
 .map iframe.contact-map {
     height: 620px;
